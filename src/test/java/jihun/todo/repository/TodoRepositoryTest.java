@@ -36,7 +36,7 @@ class TodoRepositoryTest {
 
   @Test
   @DisplayName("todo를 저장")
-  public void test1() {
+  void testSave() {
     // given
     String content = "책읽기";
     TodoEntity todoEntity = TodoEntity.builder().content(content).build();
@@ -55,7 +55,7 @@ class TodoRepositoryTest {
 
   @Test
   @DisplayName("todo 리스트 목록 가져오기")
-  void test2() {
+  void testFindAll() {
     // given
     String content1 = "책읽기";
     TodoEntity todoEntity1 = TodoEntity.builder().content(content1).build();
@@ -73,7 +73,7 @@ class TodoRepositoryTest {
 
   @Test
   @DisplayName("todo 한건보기")
-  void test3() {
+  void testFind() {
     // given
     String content = "책읽기";
     TodoEntity todoEntity = TodoEntity.builder().content(content).build();
@@ -92,7 +92,7 @@ class TodoRepositoryTest {
 
   @Test
   @DisplayName("todo 수정하기")
-  void test4() {
+  void TestModify() {
     // given
     String content = "책읽기";
     String expected = "영화보기";
@@ -111,7 +111,7 @@ class TodoRepositoryTest {
 
   @Test
   @DisplayName("todo 삭제하기")
-  void test5() {
+  void testDelete() {
     // given
     String content = "책읽기";
     TodoEntity todoEntity = TodoEntity.builder().content(content).build();
@@ -128,7 +128,7 @@ class TodoRepositoryTest {
 
   @Test
   @DisplayName("삭제되지 않은 todo 리스트 목록 가져오기")
-  void test6() {
+  void testFindAllNotDeleted() {
     // given
     String content1 = "책읽기";
     TodoEntity todoEntity1 = TodoEntity.builder().content(content1).build();
