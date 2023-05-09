@@ -1,4 +1,4 @@
-package jihun.todo.Repository;
+package jihun.todo.repository;
 
 import jihun.todo.configuration.JpaConfig;
 import jihun.todo.model.entity.TodoEntity;

@@ -1,4 +1,4 @@
-package jihun.todo.Repository;
+package jihun.todo.repository;
 
 import jihun.todo.model.entity.TodoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
