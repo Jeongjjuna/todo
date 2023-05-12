@@ -1,6 +1,5 @@
 package jihun.todo.model.entity;
 
-import jihun.todo.model.TodoDto;
 import lombok.*;
 import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
@@ -33,10 +32,4 @@ public class TodoEntity {
   private LocalDateTime updatedAt;
 
   private boolean deleted;
-
-  public static TodoEntity of(TodoDto todoDto) {
-    return TodoEntity.builder()
-            .content(todoDto.getContent())
-            .build();
-  }
 }
