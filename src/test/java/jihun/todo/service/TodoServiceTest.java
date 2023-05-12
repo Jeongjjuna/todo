@@ -68,17 +68,19 @@ class TodoServiceTest {
     @Test
     @DisplayName("수정성공")
     public void testModify() {
+      Integer todoId = 1;
       Request request = Request.builder()
               .content("영화보기")
               .build();
 
       TodoEntity entity = TodoEntity.builder()
+              .id(1)
               .content("영화보기")
               .build();
 
       when(todoRepository.findById(any())).thenReturn(Optional.of(entity));
 
-      Response actual = todoService.modify(request);
+      Response actual = todoService.modify(todoId, request);
 
       assertThat(actual.getContent()).isSameAs(entity.getContent());
     }
@@ -86,6 +88,7 @@ class TodoServiceTest {
     @Test
     @DisplayName("수정시 해당 todo id가 존재하지 않는경우 예외발생")
     public void testModifyException() {
+      Integer todoId = 1;
       Request request = Request.builder()
               .id(1)
               .content("영화보기")
@@ -93,7 +96,7 @@ class TodoServiceTest {
 
       when(todoRepository.findById(any(Integer.class))).thenReturn(Optional.empty());
 
-      assertThatCode(() -> todoService.modify(request))
+      assertThatCode(() -> todoService.modify(todoId, request))
               .isInstanceOf(BaseException.class)
               .hasMessageContaining("not found");
 

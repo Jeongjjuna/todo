@@ -2,7 +2,10 @@ package jihun.todo.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -15,9 +18,16 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
-            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
+            .authorizeHttpRequests(auth -> auth.
+                    anyRequest().authenticated()
+            )
             .csrf().ignoringAntMatchers("/h2-console/**").and().headers().frameOptions().sameOrigin().and()
-            .formLogin().and()
             .build();
+  }
+
+  @Bean
+  public WebSecurityCustomizer webSecurityCustomizer() {
+    // 정적파일 혹은 그 밖에 security 의 관리 하에 두지 않는 것들.
+    return (web) -> web.ignoring().antMatchers("/todo/**");
   }
 }

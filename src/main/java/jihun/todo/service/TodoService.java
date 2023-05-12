@@ -32,9 +32,7 @@ public class TodoService {
   }
 
   @Transactional
-  public Response modify(Request request) {
-    Integer todoId = request.getId();
-
+  public Response modify(Integer todoId, Request request) {
     TodoEntity entity = todoRepository.findById(todoId).orElseThrow(() ->
             new BaseException(ResultType.NOT_FOUND));
 
