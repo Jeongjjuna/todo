@@ -2,6 +2,7 @@ package jihun.todo.service;
 
 import jihun.todo.dto.TodoDTO.Request;
 import jihun.todo.dto.TodoDTO.Response;
+import jihun.todo.exception.BaseException;
 import jihun.todo.model.entity.TodoEntity;
 import jihun.todo.repository.TodoRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -93,7 +94,9 @@ class TodoServiceTest {
       when(todoRepository.findById(any(Integer.class))).thenReturn(Optional.empty());
 
       assertThatCode(() -> todoService.modify(request))
-              .isInstanceOf(IllegalArgumentException.class);
+              .isInstanceOf(BaseException.class)
+              .hasMessageContaining("not found");
+
     }
   }
 
@@ -127,7 +130,8 @@ class TodoServiceTest {
 
       // then
       assertThatCode(() -> todoService.delete(todoId))
-              .isInstanceOf(IllegalArgumentException.class);
+              .isInstanceOf(BaseException.class)
+              .hasMessageContaining("not found");
     }
   }
 
@@ -165,7 +169,8 @@ class TodoServiceTest {
 
       // then
       assertThatCode(() -> todoService.find(requestId))
-              .isInstanceOf(IllegalArgumentException.class);
+              .isInstanceOf(BaseException.class)
+              .hasMessageContaining("not found");
     }
 
     @Test

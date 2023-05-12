@@ -2,6 +2,8 @@ package jihun.todo.service;
 
 import jihun.todo.dto.TodoDTO.Request;
 import jihun.todo.dto.TodoDTO.Response;
+import jihun.todo.exception.BaseException;
+import jihun.todo.exception.ResultType;
 import jihun.todo.model.entity.TodoEntity;
 import jihun.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +36,7 @@ public class TodoService {
     Integer todoId = request.getId();
 
     TodoEntity entity = todoRepository.findById(todoId).orElseThrow(() ->
-            new IllegalArgumentException());
+            new BaseException(ResultType.NOT_FOUND));
 
     entity.setContent(request.getContent());
     todoRepository.save(entity);
@@ -45,7 +47,7 @@ public class TodoService {
   @Transactional
   public void delete(Integer todoId) {
     TodoEntity entity = todoRepository.findById(todoId).orElseThrow(() ->
-            new IllegalArgumentException());
+            new BaseException(ResultType.NOT_FOUND));
 
     entity.setDeleted(true);
 
@@ -55,7 +57,7 @@ public class TodoService {
   @Transactional
   public Response find(Integer todoId) {
     TodoEntity entity = todoRepository.findById(todoId).orElseThrow(() ->
-            new IllegalArgumentException());
+            new BaseException(ResultType.NOT_FOUND));
 
     return modelMapper.map(entity, Response.class);
   }
