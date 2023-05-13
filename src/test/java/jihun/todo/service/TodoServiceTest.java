@@ -3,7 +3,7 @@ package jihun.todo.service;
 import jihun.todo.dto.TodoDTO.Request;
 import jihun.todo.dto.TodoDTO.Response;
 import jihun.todo.exception.BaseException;
-import jihun.todo.model.entity.TodoEntity;
+import jihun.todo.domain.TodoEntity;
 import jihun.todo.repository.TodoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

@@ -1,7 +1,7 @@
 package jihun.todo.repository;
 
 import jihun.todo.configuration.JpaConfig;
-import jihun.todo.model.entity.TodoEntity;
+import jihun.todo.domain.TodoEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,7 @@ class TodoRepositoryTest {
     // then
     assertThat(savedTodoEntity.getId()).isNotNull();
     assertThat(savedTodoEntity.getContent()).isEqualTo(content);
-    assertThat(savedTodoEntity.getCreateAt()).isNotNull();
+    assertThat(savedTodoEntity.getCreatedAt()).isNotNull();
     assertThat(savedTodoEntity.getUpdatedAt()).isNotNull();
   }
 

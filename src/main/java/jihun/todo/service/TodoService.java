@@ -4,7 +4,7 @@ import jihun.todo.dto.TodoDTO.Request;
 import jihun.todo.dto.TodoDTO.Response;
 import jihun.todo.exception.BaseException;
 import jihun.todo.exception.ResultType;
-import jihun.todo.model.entity.TodoEntity;
+import jihun.todo.domain.TodoEntity;
 import jihun.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
