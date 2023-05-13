@@ -221,3 +221,5 @@ fabric.properties
 
 
 .idea
+
+application-prod.yml

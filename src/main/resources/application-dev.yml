@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo
+    username: postgres
+    password: postgres
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+  #      show_sql: true
+        format_sql: true
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+
+  output:
+    ansi:
+      enabled: always
+
+logging.level:
+  org.hibernate.SQL: debug
+  org.springframework.web: debug
+  org.hibernate.type: trace
